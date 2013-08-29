@@ -25,67 +25,72 @@ header h1{
   text-align: center;
 }
 
-.story {
-  border-bottom: 1px solid #E0E0E0;
-  color: #666D74;
-  height: 100%;
-  min-height: 50px;
-  padding: 10px 5px;
+.stories {
+  width: 100%;
 }
 
-.story:hover { background-color: #F6F6EF;}
-  
-.story:last-child {
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 2px;
+.stories td { border-bottom: 1px solid #E0E0E0; }
+.stories:last-child { border: none; }
+
+.stories tr:hover {
+  background-color: #F6F6EF;
 }
 
-.story .number {
-  float: left;
-  margin-right: 0.5em;
-  max-height: 100%;
+.stories .number {  
+  display: block;
   min-height: 50px;
-  min-width: 2em;
+  padding: 5px 10px 5px 0;
   text-align: right;
 }
 
-a.storyLink {
-  color: #666D74;
-  float: left;
+.stories .main {
+  display: block;
+  min-height: 50px;
+  padding: 5px 0;
+}
+
+.main a {
+  color: black;
   text-decoration: none;
 }
 
-.story .middle {
-  width: 700px;
+.main a:visited { color: #888; }
+
+.main .title { font-weight: bold; }
+
+.main .comhead {
+  color: #385487;
+  font-size: 13px;
+  font-weight: bold;
 }
 
-.story .middle:hover { background-color: #F6F6EF; }
+.main .metadata {
+  color: #666D74;
+  font-size: 13px;
+}
 
-.story .right {
+.stories .comment {
   background: transparent url("../images/comment.png") no-repeat;
   background-size: 16px;
-  float: right;
+  margin: 5px 0 5px 10px;
   min-height: 50px;
-  min-width: 2em;
+  width: 32px;
 }
 
-.story .right:hover { background-image: url("../images/comment-hover.png");}
+.stories .comment:hover { background-image: url("../images/comment-hover.png");}
+
+.stories .more {
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  width: auto;
+}
 
 strong.storyTitle {
   color: black;
   font-size: 15px;
   font-weight: bold;
   padding-right: 32px;
-}
-
-.comhead {
-  color: #385487;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.metadata {
-  font-size: 13px;
 }
 
 @media screen and (max-width: 768px) {
@@ -95,10 +100,6 @@ strong.storyTitle {
   }
   .story .middle {
     width: 400px;
-  }
-  .story .right {
-    position: absolute;
-    right: 0;
   }
   .wrapper { margin: 0; }
 }

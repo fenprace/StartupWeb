@@ -30,6 +30,7 @@ app.factory('startupApi', function($http, $q, $angularCacheFactory) {
 
 app.directive('stories', function(startupApi) {
   return {
+    restrict: 'E',
     templateUrl: 'templates/stories.html',
     link: function(scope, element, attrs) {
       startupApi.home().then(function(data) {
