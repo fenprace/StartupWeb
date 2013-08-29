@@ -35,6 +35,7 @@ app.directive('stories', function(startupApi) {
     link: function(scope, element, attrs) {
       startupApi.home().then(function(data) {
         scope.stories = data;
+        $('.more').text('More...')
       });
     }
   }
