@@ -1,15 +1,16 @@
 <div class="story" ng-repeat="story in stories">
   <a class="storyLink" href="{{ story.url }}">
-    <section class="number left" ng-bind="$index + 1 + '.'"></section>
     <section class="middle">
+      <section class="number left" ng-bind="$index + 1 + '.'"></section>
       <strong class="storyTitle" ng-bind="story.title"></strong>
-      <section>
-        <span class="comhead" ng-bind="story.comhead"></span>
-        <br>
-        <span>
-          {{ story.point }} Points by {{ story.submittor }}・{{ story.discussions_count }}
-        </span>
-      </section>
+      <br>
+      <span class="comhead" ng-bind="story.comhead"></span>
+      <br>
+      <span class="metadata">
+        {{ story.point }} Points by {{ story.submittor }}・{{ story.discussions_count }}
+      </span>
     </section>
   </a>
+  
+   <a href=""><section class="right"></section></a>
 </div>
