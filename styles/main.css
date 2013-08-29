@@ -19,15 +19,59 @@ header {
   height: 45px;
 }
 
-header h1{
-  font-size: 20px;
-  line-height: 45px;
-  text-align: center;
+header .about {
+  color: white;
+  display: inline-block;
+  float: left;
+  font-weight: bold;
+  line-height: 29px;
+  width: 10%;
 }
 
-.stories {
-  width: 100%;
+header .aboutButton {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 7px 5px;
+  padding: 0 5px;
 }
+
+header .aboutButton:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+header h1{
+  display: inline-block;
+  font-size: 20px;
+  line-height: 45px;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+
+header .refresh {
+  color: white;
+  display: inline-block;
+  float: right;
+  font-weight: bold;
+  line-height: 29px;
+  text-align: right;
+}
+
+header .refreshButton {
+  background: rgba(255, 255, 255, 0.2) url("../images/refresh.png") no-repeat;
+  background-size: 16px;
+  border: 1px solid white;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 7px 5px;
+  padding: 0 5px;
+}
+
+header .refreshButton:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+.stories { width: 100%; }
 
 .stories td { border-bottom: 1px solid #E0E0E0; }
 .stories:last-child { border: none; }
@@ -53,10 +97,12 @@ header h1{
   color: black;
   text-decoration: none;
 }
-
 .main a:visited { color: #888; }
 
-.main .title { font-weight: bold; }
+.main .title {
+  font-size: 15px;
+  font-weight: bold;
+}
 
 .main .comhead {
   color: #385487;
@@ -86,21 +132,12 @@ header h1{
   width: auto;
 }
 
-strong.storyTitle {
-  color: black;
-  font-size: 15px;
-  font-weight: bold;
-  padding-right: 32px;
-}
-
 @media screen and (max-width: 768px) {
   header h1 {
     border-radius: none;
     margin: 0;
   }
-  .story .middle {
-    width: 400px;
-  }
+
   .wrapper { margin: 0; }
 }
 
