@@ -90,6 +90,7 @@ header .leftButton:hover, header .rightButton:hover {
   min-height: 50px;
   padding: 5px 10px 5px 0;
   text-align: right;
+  width: 32px;
 }
 
 .stories .main {
