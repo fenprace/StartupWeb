@@ -28,6 +28,28 @@ app.factory('startupApi', function($http, $q, $angularCacheFactory) {
   }
 });
 
+app.config(function($routeProvider) {
+  $routeProvider.when('/', {
+    template: '<stories></stories>',
+  }).when('/about', {
+    templateUrl: 'templates/about.html',
+  })
+});
+
+app.controller('HeaderCtrl', ['$scope', '$location',
+  function($scope, $location) {
+    if ($location.path() === '/') {
+      $scope.leftText = 'About';
+      $scope.leftHref = '#/about'
+      $scope.showRightButton = true;
+      $scope.rightButton = 'Refresh';
+    } else if ($location.path() === '/about') {
+      $scope.leftText = 'Home';
+      $scope.leftHref = '#/'
+      $scope.showRightButton = false;
+    }
+  }]);
+
 app.controller('StoriesCtrl', ['$scope', 'startupApi',
   function($scope, startupApi) {
     startupApi.home(true).then(function(data) {
@@ -55,10 +77,18 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
     $('.refresh').click($scope.refresh);
   }]);
 
+app.directive('pageHeader', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    controller: 'HeaderCtrl',
+    templateUrl: 'templates/page-header.html'
+  }
+});
+
 app.directive('stories', function(startupApi) {
   return {
     restrict: 'E',
-    transclude: true,
     templateUrl: 'templates/stories.html',
     controller: 'StoriesCtrl'
   }

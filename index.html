@@ -5,21 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/normalize.css" type="text/css">
     <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="shortcut icon"
+    href="images/favicon.ico" type="image/vnd.microsoft.icon">
   </head>
   
   <body>
     <div class="wrapper">
-      <header>
-        <a class="about">
-          <span class="aboutButton">About</span>
-        </a>
-        <h1>StartupWeb</h1>
-        <a class="refresh" href="#">
-          <span class="refreshButton">Refresh</sapn>
-        </a>
-      </header>
-      
-      <stories></stories>
+      <ng-view></ng-view>
     </div>
     
     <script src="scripts/vendor/angular.min.js"></script>

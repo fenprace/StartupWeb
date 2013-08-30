@@ -20,7 +20,7 @@ header {
   position: relative;
 }
 
-header .about {
+header .left {
   color: white;
   display: inline-block;
   font-weight: bold;
@@ -30,7 +30,7 @@ header .about {
   top: 0;
 }
 
-header .aboutButton {
+header .leftButton {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid white;
   border-radius: 2px;
@@ -39,8 +39,6 @@ header .aboutButton {
   margin: 7px 5px;
   padding: 0 5px;
 }
-
-header .aboutButton:hover { background-color: rgba(255, 255, 255, 0.3); }
 
 header h1{
   color: white;
@@ -52,7 +50,7 @@ header h1{
   width: 100%;
 }
 
-header .refresh {
+header .right {
   color: white;
   display: inline-block;
   font-weight: bold;
@@ -63,7 +61,7 @@ header .refresh {
   top: 0;
 }
 
-header .refreshButton {
+header .rightButton {
   background: rgba(255, 255, 255, 0.2);
   background-size: 16px;
   border: 1px solid white;
@@ -74,7 +72,9 @@ header .refreshButton {
   padding: 0 5px;
 }
 
-header .refreshButton:hover { background-color: rgba(255, 255, 255, 0.3); }
+header .leftButton:hover, header .rightButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
 .stories { width: 100%; }
 
@@ -100,6 +100,7 @@ header .refreshButton:hover { background-color: rgba(255, 255, 255, 0.3); }
 
 .main a {
   color: black;
+  display: block;
   text-decoration: none;
 }
 .main a:visited { color: #888; }
@@ -137,6 +138,66 @@ header .refreshButton:hover { background-color: rgba(255, 255, 255, 0.3); }
   text-align: center;
   width: auto;
 }
+
+section.about {
+  background-color: #F6F6EF;
+  padding: 10px 9px;
+}
+
+section.about .description {
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 2px;
+  height: 60px;
+  padding: 10px;
+}
+
+section.about .icon {
+  background: url("../images/startupnews.png");
+  background-size: 60px;
+  border-radius: 2px;
+  float: left;
+  height: 60px;
+  width: 60px;
+}
+
+section.about .text {
+  float: left;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+section.about ul {
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 2px;
+  list-style-type: none;
+  padding: 0;
+}
+
+section.about ul a {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+section.about li {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 10px;
+}
+section.about li:hover {
+  background-color: #F6F6EF;
+}
+section.about ul:last-of-type { border-bottom: none; }
+
+section.about footer {
+  color: #4C566C;
+  text-align: center;
+  font-size: 13px;
+}
+
+section.about footer a { color: #4C566C; }
 
 @media screen and (max-width: 768px) {
   header h1 {
