@@ -131,6 +131,7 @@ header .refreshButton:hover { background-color: rgba(255, 255, 255, 0.3); }
 .stories .comment:hover { background-image: url("../images/comment-hover.png");}
 
 .stories .more {
+  border-bottom: none;
   height: 60px;
   margin: 0 auto;
   text-align: center;

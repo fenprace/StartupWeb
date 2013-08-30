@@ -11,12 +11,12 @@ app.factory('startupApi', function($http, $q, $angularCacheFactory) {
   });
   
   return {
-    home: function() {
+    home: function(loadCache) {
       delay = $q.defer();
       cache = $angularCacheFactory.get('defaultCache')
       
-      if (cache.get('home')) {
-        delay.resolve(cache.get('home'))
+      if (loadCache === true &&  cache.get('home')) {
+        delay.resolve(cache.get('home'));
       } else {
         $http.get(baseUrl + 'home', { cache: true }).success(function(res) {
           cache.put('home', res, { maxAge: 90000 });
@@ -28,15 +28,38 @@ app.factory('startupApi', function($http, $q, $angularCacheFactory) {
   }
 });
 
+app.controller('StoriesCtrl', ['$scope', 'startupApi',
+  function($scope, startupApi) {
+    startupApi.home(true).then(function(data) {
+      $scope.$emit('loaded', data);
+    });
+    
+    $scope.refresh = function() {
+      $scope.$emit('loading');
+      startupApi.home(false).then(function(data) {
+        $scope.$emit('loaded', data);
+      });
+    };
+    
+    $scope.$on('loading', function() {
+      $('.more').text('Loading...');
+      $('stories td:not(.more)').hide();
+    });
+    
+    $scope.$on('loaded', function(event, data) {
+      $scope.stories = data;
+      $('stories td:not(.more)').show();
+      $('.more').text('More...');
+    });
+    
+    $('.refresh').click($scope.refresh);
+  }]);
+
 app.directive('stories', function(startupApi) {
   return {
     restrict: 'E',
+    transclude: true,
     templateUrl: 'templates/stories.html',
-    link: function(scope, element, attrs) {
-      startupApi.home().then(function(data) {
-        scope.stories = data;
-        $('.more').text('More...')
-      });
-    }
+    controller: 'StoriesCtrl'
   }
 });
