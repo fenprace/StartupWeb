@@ -2,13 +2,15 @@
 <table class="stories">
   <tbody>
       <tr ng-repeat="story in stories">
-        <td><div class="number" ng-bind="$index + 1 + '.'"></div></td>
+        <td class="numberTd">
+          <div class="number" ng-bind="$index + 1 + '.'"></div>
+        </td>
         <td>
           <div class="main">
             <a target="_blank" href="{{ story.url }}">
               <span class="title" ng-bind="story.title"></span>
               <br>
-              <span class="comhead" ng-bind="story.comhead"></span>
+              <span class="source" ng-bind="story.source"></span>
               <br>
               <span class="metadata">
                 {{ story.point }}

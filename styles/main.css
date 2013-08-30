@@ -85,6 +85,8 @@ header .leftButton:hover, header .rightButton:hover {
   background-color: #F6F6EF;
 }
 
+.stories .numberTd { vertical-align: baseline; }
+
 .stories .number {  
   display: block;
   min-height: 50px;
@@ -111,7 +113,7 @@ header .leftButton:hover, header .rightButton:hover {
   font-weight: bold;
 }
 
-.main .comhead {
+.main .source {
   color: #385487;
   font-size: 13px;
   font-weight: bold;
