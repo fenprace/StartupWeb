@@ -24,6 +24,20 @@ app.factory('startupApi', function($http, $q, $angularCacheFactory) {
         });
       }
       return delay.promise;
+    },
+    story: function(id) {
+      delay = $q.defer();
+      cache = $angularCacheFactory.get('defaultCache')
+      
+      if (cache.get(id)) {
+        delay.resolve(cache.get(id))
+      } else {
+        $http.get(baseUrl + 'stories/' + id, { cache:true }).success(function(res) {
+          cache.put(id, res, { maxAge: 90000 });
+          delay.resolve(res);
+        });
+      }
+      return delay.promise;
     }
   }
 });
@@ -33,7 +47,9 @@ app.config(function($routeProvider) {
     template: '<stories></stories>',
   }).when('/about', {
     templateUrl: 'templates/about.html',
-  })
+  }).when('/stories/:id', {
+    template: '<story></story>'
+  });
 });
 
 app.controller('HeaderCtrl', ['$scope', '$location',
@@ -43,7 +59,7 @@ app.controller('HeaderCtrl', ['$scope', '$location',
       $scope.leftHref = '#/about'
       $scope.showRightButton = true;
       $scope.rightButton = 'Refresh';
-    } else if ($location.path() === '/about') {
+    } else {
       $scope.leftText = 'Home';
       $scope.leftHref = '#/'
       $scope.showRightButton = false;
@@ -77,6 +93,13 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
     $('.refresh').click($scope.refresh);
   }]);
 
+app.controller('StoryCtrl', ['$scope', '$routeParams', 'startupApi',
+  function($scope, $routeParams, startupApi) {
+    startupApi.story($routeParams.id).then(function(data) {
+      $scope.story = data;
+    });
+  }]);
+
 app.directive('pageHeader', function() {
   return {
     restrict: 'E',
@@ -86,10 +109,39 @@ app.directive('pageHeader', function() {
   }
 });
 
-app.directive('stories', function(startupApi) {
+app.directive('stories', function() {
   return {
     restrict: 'E',
     templateUrl: 'templates/stories.html',
     controller: 'StoriesCtrl'
+  }
+});
+
+app.directive('story', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/story.html',
+    controller: 'StoryCtrl'
+  }
+});
+
+app.filter('info', function() {
+  return function(point, submittor, time, count) {
+    if (point == 1) {
+      pointStr = "point"
+    } else {
+      pointStr = "points"
+    }
+    
+    if (count == 0) {
+      discussionStr = ""
+    } else if (count == 1) {
+      discussionStr = "・" + count + ' comment'
+    } else {
+      discussionStr = "・" + count + ' comments'
+    }
+    
+    phases = [point, pointStr, "by", submittor, time, discussionStr]
+    return phases.join(' ')
   }
 });

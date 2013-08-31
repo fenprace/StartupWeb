@@ -1,0 +1,27 @@
+<page-header></page-header>
+
+<section class="storyHead">
+  <a target="_blank" href="{{ story.url }}">
+    <h1 ng-bind="story.title"></h1>
+    <span class="source" ng-bind="story.source"></span>
+    <br>
+    <span class="metadata"
+      ng-bind="story.point| info:
+      story.submittor:story.time:story.discussions_count">
+    </span>
+  </a>
+</section>
+
+<section class="comments">
+  <ul>
+    <li class="l{{ comment.level }}" ng-repeat="comment in story.comments">
+      <div class="commentInfo">
+        <strong ng-bind="comment.commenter"></strong>
+        <time>
+          <a href="{{ comment.origin_link }}" ng-bind="comment.time"></a>
+        </time>
+      </div>
+      <p ng-bind="comment.body"></p>
+    </li>
+  </ul>
+</section>

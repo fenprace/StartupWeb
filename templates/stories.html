@@ -1,4 +1,5 @@
 <page-header></page-header>
+
 <table class="stories">
   <tbody>
       <tr ng-repeat="story in stories">
@@ -12,15 +13,15 @@
               <br>
               <span class="source" ng-bind="story.source"></span>
               <br>
-              <span class="metadata">
-                {{ story.point }}
-                points by {{ story.submittor }}・{{ story.discussions_count }}
+              <span class="metadata"
+              ng-bind="story.point| info:
+              story.submittor:story.time:story.discussions_count">
               </span>
             </a>
           </div>
         </td>
         <td>
-          <a href="#">
+          <a href="#/stories/{{ story.id }}">
             <div class="comment"></div>
           </a>
         </td>
