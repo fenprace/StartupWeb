@@ -21,7 +21,8 @@
           </div>
         </td>
         <td>
-          <a href="#/stories/{{ story.id }}">
+          <a  ng-show="story.discussions_count != 0"
+            href="#/stories/{{ story.id }}">
             <div class="comment"></div>
           </a>
         </td>

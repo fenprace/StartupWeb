@@ -72,7 +72,7 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
       $scope.$emit('loaded', data);
     });
     
-    window.refresh = function() {
+    refresh = function() {
       $scope.$emit('loading');
       startupApi.home(false).then(function(data) {
         $scope.$emit('loaded', data);
@@ -90,7 +90,7 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
       $('stories .loading').hide();
     });
     
-    $('.refresh').click(window.refresh);
+    $('.refresh').click(refresh);
   }]);
 
 app.controller('StoryCtrl', ['$scope', '$routeParams', 'startupApi',
