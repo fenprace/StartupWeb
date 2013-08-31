@@ -72,7 +72,7 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
       $scope.$emit('loaded', data);
     });
     
-    $scope.refresh = function() {
+    window.refresh = function() {
       $scope.$emit('loading');
       startupApi.home(false).then(function(data) {
         $scope.$emit('loaded', data);
@@ -80,17 +80,17 @@ app.controller('StoriesCtrl', ['$scope', 'startupApi',
     };
     
     $scope.$on('loading', function() {
-      $('.more').text('Loading...');
-      $('stories td:not(.more)').hide();
+      $('stories .loading').show();
+      $('stories td:not(.loading)').hide();
     });
     
     $scope.$on('loaded', function(event, data) {
       $scope.stories = data;
-      $('stories td:not(.more)').show();
-      $('.more').text('More...');
+      $('stories td:not(.loading)').show();
+      $('stories .loading').hide();
     });
     
-    $('.refresh').click($scope.refresh);
+    $('.refresh').click(window.refresh);
   }]);
 
 app.controller('StoryCtrl', ['$scope', '$routeParams', 'startupApi',

@@ -134,7 +134,7 @@ header .leftButton:hover, header .rightButton:hover {
 
 .stories .comment:hover { background-image: url("../images/comment-hover.png");}
 
-.stories .more {
+.stories .loading {
   border-bottom: none;
   height: 60px;
   margin: 0 auto;
